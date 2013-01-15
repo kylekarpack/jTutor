@@ -6,8 +6,12 @@ $(window).load(function() {
 		"selectable":true,
 		"selectHelper":true,
 		"defaultView":"agendaWeek",
-		"header":{"month"},
-        // put your options and callbacks here
+		"slotMinutes":60,
+		"allDaySlot":false,
+		header:{right:"month,agendaWeek",
+				center:"title",
+				left:"prev,next today",
+				},
     });
 });
 

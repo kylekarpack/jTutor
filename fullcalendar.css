@@ -128,7 +128,8 @@ html .fc,
 	}
 	
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-	background: #ffc;
+	background:rgb(245, 208, 211);
+	background:rgba(190, 0, 38,.1);
 	}
 	
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
@@ -203,12 +204,6 @@ html .fc,
 	left: 0;
 	width: 500px;
 	height: 100px;
-	border-width: 100px 0 0 1px;
-	border-style: solid;
-	border-color: #fff;
-	background: #444;
-	opacity: .09;
-	filter: alpha(opacity=9);
 	}
 	
 /* button states (determines colors)  */

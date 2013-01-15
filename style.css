@@ -1,5 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Bitter:700);
-
+@import url(http://fonts.googleapis.com/css?family=Montserrat:700);
 @font-face {
 font-family: Proxima;
 src: url('proximanova-light-webfont.woff')/*,
@@ -28,8 +27,8 @@ body {
 	background:#fcfcfc;
 }
 
-h1, h2, h3, h4, h5, h6, b, button {
-	font-family:'Bitter',Proxima,sans-serif;
+h1, h2, h3, h4, h5, h6, b, button, #calendar table.fc-header {
+	font-family:'Montserrat',Proxima,sans-serif;
 }
 
 #menu, #footer {
