@@ -8,7 +8,7 @@ src: url('proximanova-light-webfont.woff')/*,
 }
 
 ::selection {
-	background:rgb(190, 0, 38)
+	background:rgba(190, 0, 38,.5)
 }
 
 * {
