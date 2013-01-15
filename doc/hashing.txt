@@ -1,0 +1,12 @@
+"password"
+
+salt = "15gw2hwg3"
+
+pw = hash("15gw2hwg3" + "password")
+
+store (pw, salt)
+
+
+
+get hash(salt + givenPW) == (stored hash) => success
+
