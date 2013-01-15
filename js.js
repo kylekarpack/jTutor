@@ -2,7 +2,9 @@
 
 $(window).load(function() {
 	$(".logout").bind("click", logout);
-	scheduler.init('scheduler_here',null,"week");
+	 $('#calendar').fullCalendar({
+        // put your options and callbacks here
+    });
 });
 
 function logout() {
