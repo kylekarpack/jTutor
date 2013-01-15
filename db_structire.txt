@@ -1,0 +1,28 @@
+AUTH
+Username
+Hash
+Salt
+
+PROFILE
+Username
+First Name (Hidden?)
+Last Name (Hidden?)
+Bio
+Profile picture
+Contact Information (Hidden)
+
+MATCHING TABLE
+Username
+Skills / Proficiencies
+	(A few predefined)
+	
+AVAILABILITY
+Username
+
+			start 					end
+kkarpack	mm/dd/yy/hh/mm			mm/dd/yy/hh/mm
+kkarpack	mm/dd/yy/hh/mm			mm/dd/yy/hh/mm
+kkarpack	mm/dd/yy/hh/mm			mm/dd/yy/hh/mm
+shirac		mm/dd/yy/hh/mm			mm/dd/yy/hh/mm
+shirac		mm/dd/yy/hh/mm			mm/dd/yy/hh/mm
+	
