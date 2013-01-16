@@ -8,7 +8,7 @@ $(window).load(function() {
 		events: "datestore.php",
 		editable:true,
 		selectable:true,
-		selectHelper:true,
+		selectHelper:false,
 		defaultView:"agendaWeek",
 		allDayDefault:false,
 		slotMinutes:60,
@@ -52,8 +52,8 @@ $(window).load(function() {
 
 function update(calEvent) {
 	var id = calEvent.id;
-	var start = $.fullCalendar.formatDate(calEvent.start, 'yyyy-MM-dd hh:mm:ss');
-	var end = $.fullCalendar.formatDate(calEvent.end, 'yyyy-MM-dd hh:mm:ss');
+	var start = $.fullCalendar.formatDate(calEvent.start, 'yyyy-MM-dd HH:mm:ss');
+	var end = $.fullCalendar.formatDate(calEvent.end, 'yyyy-MM-dd HH:mm:ss');
 	
 	$.ajax({
 		type: "POST",
@@ -66,8 +66,8 @@ function update(calEvent) {
 }
 
 function store(start,end) {
-	start = $.fullCalendar.formatDate(start, 'yyyy-MM-dd hh:mm:ss');
-	end = $.fullCalendar.formatDate(end, 'yyyy-MM-dd hh:mm:ss');
+	start = $.fullCalendar.formatDate(start, 'yyyy-MM-dd HH:mm:ss');
+	end = $.fullCalendar.formatDate(end, 'yyyy-MM-dd HH:mm:ss');
 
 	$.ajax({
 		type: "POST",
