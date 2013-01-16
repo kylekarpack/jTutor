@@ -3,12 +3,15 @@
 $(window).load(function() {
 	$(".logout").bind("click", logout);
 	 $('#calendar').fullCalendar({
-		"editable":true,
+		events: "datestore.php",
+		editable:true,
 		"selectable":true,
 		"selectHelper":true,
 		"defaultView":"agendaWeek",
+		allDayDefault:false,
 		"slotMinutes":60,
 		"allDaySlot":false,
+		ignoreTimeZone:false,
 		header:{right:"month,agendaWeek",
 				center:"title",
 				left:"prev,next today",
@@ -20,8 +23,8 @@ $(window).load(function() {
 });
 
 function store(start,end) {
-	start = toDateString(start);
-	end = toDateString(end);
+	start = $.fullCalendar.formatDate(start, "yyyy-MM-dd hh:mm:ss");
+	end = $.fullCalendar.formatDate(end, "yyyy-MM-dd hh:mm:ss");
 	//
 	$.ajax({
 		type: "POST",
@@ -29,14 +32,15 @@ function store(start,end) {
 		data: { "start": start,
 				 "end": end 
 			}
-		});
+	});
 	$.ajax({
 		type: "GET",
 		url: "datestore.php",
 		success: function(data) {
-			console.log($.parseJSON(data));
+			data = $.parseJSON(data);
+			//console.log(data);
 		}
-		});
+	});
 }
 
 // utility functions
@@ -44,7 +48,8 @@ function logout() {
 	window.location.href = "logout.php";
 }
 
-// converts a JS date object to a MySQL datetime string
-function toDateString(start) {
-	return start.getUTCFullYear() + '-' + ('00' + (start.getUTCMonth()+1)).slice(-2) + '-' + start.getUTCDate() + ' ' + ('00' + start.getUTCHours()).slice(-2) + ':' + ('00' + start.getUTCMinutes()).slice(-2) + ':' + ('00' + start.getUTCSeconds()).slice(-2);
+function stringToDate(str) {
+	var t = str.split(/[- :]/);
+	// Apply each element to the Date function
+	return new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 }

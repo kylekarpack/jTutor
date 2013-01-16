@@ -20,7 +20,10 @@
 		for ($x = 0, $numrows = mysql_num_rows($query); $x < $numrows; $x++) {
 			$row = mysql_fetch_assoc($query);
 			// array in the form (startdatetime, enddatetime)
-			$events[] = array($row["start"], $row["end"]); 			
+			$events[] = array("title" => "Available",
+								"start" => $row["start"],
+								"end" => $row["end"]
+							); 			
 		}
 		//var_dump($events);
 		$response = json_encode($events); 
