@@ -18,12 +18,12 @@
 <head>
 	<meta http-equiv="content-type" content="text/html" charset="utf-8">
 	<title>Find a Conversation Partner!</title>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 	<link rel="stylesheet" href="style.css">
 	<link rel='stylesheet' type='text/css' href='fullcalendar.css' />
 	<link rel="shortcut icon" href="./assets/favicon.png">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script src="js.js"></script>
 	<script type='text/javascript' src='fullcalendar.js'></script></head>
 
@@ -32,6 +32,8 @@
 		<a href="index.php"><img src="assets/logo.png" class="logo" alt="Revercipe"></a>
 		<?php if (isset($_SESSION["name"])) { ?>
 			<button class="logout">Log Out</button>
+		<?php } else { ?>
+			<button class="register">Sign Up!</button>
 		<?php } ?>
 		
 	</div>

@@ -2,15 +2,17 @@
 
 $(window).load(function() {
 	$(".logout").bind("click", logout);
-	 $('#calendar').fullCalendar({
+	$(".register").bind("click", register);
+	
+	$("#calendar").fullCalendar({
 		events: "datestore.php",
 		editable:true,
-		"selectable":true,
-		"selectHelper":true,
-		"defaultView":"agendaWeek",
+		selectable:true,
+		selectHelper:true,
+		defaultView:"agendaWeek",
 		allDayDefault:false,
-		"slotMinutes":60,
-		"allDaySlot":false,
+		slotMinutes:60,
+		allDaySlot:false,
 		ignoreTimeZone:false,
 		header:{right:"month,agendaWeek",
 				center:"title",
@@ -18,13 +20,16 @@ $(window).load(function() {
 				},
 		select:function(startDate,endDate) { 
 			store(startDate, endDate);
-		},		
+		},
+		eventClick:function(calEvent) {
+			$(this).remove();
+		}
     });
 });
 
 function store(start,end) {
-	start = $.fullCalendar.formatDate(start, "yyyy-MM-dd hh:mm:ss");
-	end = $.fullCalendar.formatDate(end, "yyyy-MM-dd hh:mm:ss");
+	start = $.fullCalendar.formatDate(start, 'yyyy-MM-dd hh:mm:ss');
+	end = $.fullCalendar.formatDate(end, 'yyyy-MM-dd hh:mm:ss');
 	//
 	$.ajax({
 		type: "POST",
@@ -33,14 +38,6 @@ function store(start,end) {
 				 "end": end 
 			}
 	});
-	$.ajax({
-		type: "GET",
-		url: "datestore.php",
-		success: function(data) {
-			data = $.parseJSON(data);
-			//console.log(data);
-		}
-	});
 }
 
 // utility functions
@@ -48,8 +45,6 @@ function logout() {
 	window.location.href = "logout.php";
 }
 
-function stringToDate(str) {
-	var t = str.split(/[- :]/);
-	// Apply each element to the Date function
-	return new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+function register() {
+	window.location.href = "register.php";
 }
