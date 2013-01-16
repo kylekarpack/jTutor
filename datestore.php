@@ -6,14 +6,21 @@
 	$user = $_SESSION["name"];
 	$connection = mysql_select_db("steve", mysql_connect("localhost", "steve", "password"));
 	if ($_SERVER['REQUEST_METHOD'] == "POST") { //logging user input
-		if (isset($_POST["start"]) && isset($_POST["end"])) {
+		if (isset($_POST["start"]) && isset($_POST["end"])) { //post request: create or update an event
 			$start = $_POST["start"];
 			$end = $_POST["end"];
 			$id = mysql_fetch_row(mysql_query("SELECT event_id FROM availability WHERE username = '$user' ORDER BY event_id DESC LIMIT 1"));
 			$id = $id[0];
 			$id += 1;
-			mysql_query("INSERT INTO availability VALUES ('$user','$id','$start','$end')");
-			//echo ("Stored a start time of " . $start . " and an end time of " . $end . ", and an event ID successfully for " . $user);
+			
+			if (isset($_POST["update"])) { //update an event
+				$id = $_POST["update"];
+				$query = mysql_query("UPDATE availability SET start = '$start', end = '$end' WHERE username = '$user' AND event_id = '$id'");
+				echo ("Updated a start time of " . $start . " and an end time of " . $end . ", successfully for " . $user);
+			} else { //create an event
+				mysql_query("INSERT INTO availability VALUES ('$user','$id','$start','$end')");
+				echo ("Stored a start time of " . $start . " and an end time of " . $end . ", and an event ID successfully for " . $user);
+			}
 		} else {
 			header("HTTP/1.0 400 Invalid Request");
 		}
