@@ -9,18 +9,25 @@
 		if (isset($_POST["start"]) && isset($_POST["end"])) {
 			$start = $_POST["start"];
 			$end = $_POST["end"];
-			mysql_query("INSERT INTO availability VALUES ('$user','$start','$end')");
-			echo ("Stored a start time of " . $start . " and an end time of " . $end . " successfully for " . $user);
+			$id = mysql_fetch_row(mysql_query("SELECT event_id FROM availability WHERE username = '$user' ORDER BY event_id DESC LIMIT 1"));
+			$id = $id[0];
+			$id += 1;
+			mysql_query("INSERT INTO availability VALUES ('$user','$id','$start','$end')");
+			//echo ("Stored a start time of " . $start . " and an end time of " . $end . ", and an event ID successfully for " . $user);
 		} else {
 			header("HTTP/1.0 400 Invalid Request");
 		}
+	} elseif (isset($_GET["delete"])) {
+		$id = $_GET["delete"];
+		$query = mysql_query("DELETE FROM availability WHERE username = '$user' AND event_id = '$id'");
+		echo "Event #" . $id . " for user " . $user . " deleted";
 	} else { //get request, load up the calendar with JSON data
-		$query = mysql_query("SELECT start, end FROM availability WHERE username = '$user'");
+		$query = mysql_query("SELECT event_id, start, end FROM availability WHERE username = '$user'");
 		$events = array();
 		for ($x = 0, $numrows = mysql_num_rows($query); $x < $numrows; $x++) {
 			$row = mysql_fetch_assoc($query);
-			// array in the form (startdatetime, enddatetime)
 			$events[] = array("title" => "Available",
+								"id" => $row["event_id"],
 								"start" => $row["start"],
 								"end" => $row["end"]
 							); 			

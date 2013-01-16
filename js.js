@@ -22,8 +22,14 @@ $(window).load(function() {
 			store(startDate, endDate);
 		},
 		eventClick:function(calEvent) {
-			$(this).remove();
-		}
+								$(this).fadeOut( function() {
+									$.ajax({
+										type: "GET",
+										url: "datestore.php",
+										data: { "delete": calEvent.id }
+									});
+								}
+							)}
     });
 });
 
