@@ -48,6 +48,16 @@ $(window).load(function() {
 		)},
 		
 	});
+	
+	$("#minical").fullCalendar({
+				events: "datestore.php",
+				editable:false,
+				selectable:false,
+				defaultView:"month",
+				allDaySlot:false,
+				ignoreTimeZone:false,
+				header:false,
+			});
 });
 
 function update(calEvent) {

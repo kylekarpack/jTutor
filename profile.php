@@ -10,18 +10,8 @@ if (isset($_SESSION["name"]) ) { # User is logged in
 			<tr><td>Schedule:</td>
 			<td>
 			<a href="availability.php">
+			<div class="overlay"><span>Set Your Availability</span></div>
 			<div id="minical">
-			<script>
-			$("#minical").fullCalendar({
-				events: "datestore.php",
-				editable:false,
-				selectable:false,
-				defaultView:"month",
-				allDaySlot:false,
-				ignoreTimeZone:false,
-				header:false,
-			});
-			</script>
 			</div>
 			</a>
 			</td></tr>
