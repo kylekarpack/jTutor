@@ -1,0 +1,18 @@
+Ideas with Steve
+
+
+Oauth login
+
+Higher JS functionality in cal (recurring, etc)
+
+Profile fields
+	Profile Photo
+	Video (welcome)
+	Bio (<textarea>)
+	Strengths
+	Interests
+	Availability visible (book me!) => Request form
+	
+
+Better month view? (More usability though?)
+
